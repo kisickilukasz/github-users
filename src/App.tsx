@@ -1,27 +1,52 @@
-import * as React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from 'react-router-dom';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React the hard way!
-          Also checking repo setup.
-        </a>
-      </header>
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">User list</Link>
+          </li>
+          <li>
+            <Link to="/123">User list</Link>
+          </li>
+        </ul>
+
+        <hr />
+        <Switch>
+          <Route exact path="/">
+            <UserList />
+          </Route>
+          <Route path="/:userId">
+            <UserDetails />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+function UserList() {
+  return (
+    <div>
+      <h2>User list</h2>
     </div>
   );
 }
 
-export default App;
+function UserDetails() {
+  const { userId } = useParams();
+  return (
+    <div>
+      <h2>{userId}</h2>
+    </div>
+  );
+}
