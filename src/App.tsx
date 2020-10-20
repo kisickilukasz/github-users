@@ -1,11 +1,8 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+import { UserList } from './UserList/UserList';
+import { UserDetails } from './UserDetails/UserDetails';
 
 export default function App() {
   return (
@@ -16,7 +13,7 @@ export default function App() {
             <Link to="/">User list</Link>
           </li>
           <li>
-            <Link to="/123">User list</Link>
+            <Link to="/123">User details</Link>
           </li>
         </ul>
 
@@ -31,22 +28,5 @@ export default function App() {
         </Switch>
       </div>
     </Router>
-  );
-}
-
-function UserList() {
-  return (
-    <div>
-      <h2>User list</h2>
-    </div>
-  );
-}
-
-function UserDetails() {
-  const { userId } = useParams();
-  return (
-    <div>
-      <h2>{userId}</h2>
-    </div>
   );
 }
