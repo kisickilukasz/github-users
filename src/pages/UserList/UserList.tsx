@@ -4,8 +4,9 @@ import { useHistory } from 'react-router-dom';
 
 import { List } from 'antd';
 import { UserAvatar } from '../../components/UserAvatar';
+import { Header } from '../../components/styled/Header';
 
-import { fetchGithubUsers } from './actions/userList';
+import { fetchUsers } from './actions/userList';
 
 import { getUserList } from './selectors/userList';
 
@@ -15,7 +16,7 @@ export function UserList() {
   const userList = useSelector(getUserList);
 
   useEffect(() => {
-    dispatch(fetchGithubUsers());
+    dispatch(fetchUsers());
   }, [dispatch]);
 
   const onClick = (userLogin: string) => {
@@ -25,7 +26,7 @@ export function UserList() {
 
   return (
     <List
-      header={<div>Header</div>}
+      header={<Header title="GitHub users" />}
       itemLayout="horizontal"
       dataSource={userList}
       renderItem={(item: any) => (

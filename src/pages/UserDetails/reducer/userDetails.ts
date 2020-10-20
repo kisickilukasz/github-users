@@ -1,19 +1,35 @@
 import { UserDetailsActionType } from '../constants/actionTypes';
 
 const initialState = {
-  userName: 'some name'
+  isFetching: false,
+  user: null,
+  errors: []
 };
 
 interface UserDetails {
-  userName: string;
+  isFetching: boolean;
+  user: any;
+  errors: any;
 }
 
 export function userDetails(state: UserDetails = initialState, action: any): UserDetails {
   switch (action.type) {
-    case UserDetailsActionType.CHANGE_USER_NAME:
+    case UserDetailsActionType.FETCH_USER_DETAILS:
       return {
         ...state,
-        userName: action.name
+        isFetching: true
+      };
+    case UserDetailsActionType.FETCH_USER_DETAILS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        user: action.user
+      };
+    case UserDetailsActionType.FETCH_USER_DETAILS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errors: action.errors
       };
   }
   return state;

@@ -1,15 +1,15 @@
 import { Dispatch } from 'redux';
 
-import { getGithubUsers } from '../api/userList';
+import { getGitHubUsers } from '../api/userList';
 
 import { UserListActionType } from '../constants/actionTypes';
 
-export function fetchGithubUsers() {
+export function fetchUsers() {
   return (dispatch: Dispatch) => {
     dispatch({
       type: UserListActionType.FETCH_USERS
     });
-    return getGithubUsers()
+    return getGitHubUsers()
       .then((response) => dispatch(fetchUsersSuccess(response.data)))
       .catch((error) => dispatch(fetchUsersFailure(error.resonse.data)));
   };

@@ -1,26 +1,28 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
-import { Button } from 'antd';
+import { Header } from '../../components/styled/Header';
 
-import { updateUserDetailsName } from './actions/userDetails';
+import { fetchUserDetails } from './actions/userDetails';
 
-import { getUserName } from './selectors/userDetails';
+import { getUser } from './selectors/userDetails';
 
 export function UserDetails() {
   const dispatch = useDispatch();
-  const userName = useSelector(getUserName);
+  const user = useSelector(getUser);
   const { userLogin } = useParams();
+  const history = useHistory();
 
-  const updateUserName = useCallback((e) => dispatch(updateUserDetailsName(e.target.value)), [dispatch]);
+  useEffect(() => {
+    dispatch(fetchUserDetails(userLogin));
+  }, [dispatch]);
+
+  // const updateUserName = useCallback((e) => dispatch(updateUserDetailsName(e.target.value)), [dispatch]);
 
   return (
-    <div>
-      <h2>{userLogin}</h2>
-      <h2>{userName}</h2>
-      <input onChange={updateUserName} />
-      <Button type="primary">Button</Button>
-    </div>
+    <Fragment>
+      <Header title={<div>{user?.name}</div>} onBack={history.goBack} />
+    </Fragment>
   );
 }

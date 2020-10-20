@@ -22,11 +22,13 @@ export function userList(state: UserList = initialState, action: any): UserList 
     case UserListActionType.FETCH_USERS_SUCCESS:
       return {
         ...state,
+        isFetching: false,
         users: action.users
       };
     case UserListActionType.FETCH_USERS_FAILURE:
       return {
         ...state,
+        isFetching: false,
         errors: action.errors
       };
   }
