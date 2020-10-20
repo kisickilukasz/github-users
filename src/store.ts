@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 import { userDetails } from './UserDetails/reducer/userDetails';
@@ -14,4 +15,4 @@ const rootReducer = combineReducers({
 });
 
 // creates global store, connects redux devtools and other middlewares
-export default createStore(rootReducer, composeWithDevTools(applyMiddleware(logger)));
+export default createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk, logger)));

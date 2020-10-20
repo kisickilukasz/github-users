@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { UserList } from './UserList/UserList';
 import { UserDetails } from './UserDetails/UserDetails';
 
+import './App.css';
+
 export default function App() {
   return (
     <Router>

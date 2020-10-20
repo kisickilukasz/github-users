@@ -1,45 +1,26 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
+import { Button } from 'antd';
 
 import { updateUserDetailsName } from './actions/userDetails';
 
 import { getUserName } from './selectors/userDetails';
 
-interface MapStateToProps {
-  userName: string;
-}
-
-function mapStateToProps(state: any): MapStateToProps {
-  return {
-    userName: getUserName(state)
-  };
-}
-
-interface MapDispatchToProps {
-  updateUserName: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-function mapDispatchToProps(dispatch: any): MapDispatchToProps {
-  return {
-    updateUserName: (e) => dispatch(updateUserDetailsName(e.target.value))
-  };
-}
-
-type UserDetailsProps = MapStateToProps & MapDispatchToProps;
-
-function UserDetailsPage({ userName, updateUserName }: UserDetailsProps) {
+export function UserDetails() {
+  const dispatch = useDispatch();
+  const userName = useSelector(getUserName);
   const { userId } = useParams();
+
+  const updateUserName = useCallback((e) => dispatch(updateUserDetailsName(e.target.value)), [dispatch]);
+
   return (
     <div>
       <h2>{userId}</h2>
       <h2>{userName}</h2>
       <input onChange={updateUserName} />
+      <Button type="primary">Button</Button>
     </div>
   );
 }
-
-export const UserDetails = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserDetailsPage);

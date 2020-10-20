@@ -8,10 +8,7 @@ interface UserDetails {
   userName: string;
 }
 
-export function userDetails(
-  state: UserDetails = initialState,
-  action: any
-): UserDetails {
+export function userDetails(state: UserDetails = initialState, action: any): UserDetails {
   switch (action.type) {
     case UserDetailsActionType.CHANGE_USER_NAME:
       return {

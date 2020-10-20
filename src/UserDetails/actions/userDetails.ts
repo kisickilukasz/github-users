@@ -1,5 +1,3 @@
-import { Action } from 'redux';
-
 import { UserDetailsActionType } from '../constants/actionTypes';
 
 export function updateUserDetailsName(name: string) {

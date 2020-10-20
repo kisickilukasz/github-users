@@ -1,0 +1,5 @@
+export enum UserListActionType {
+  FETCH_USERS = 'userList::FETCH_USERS',
+  FETCH_USERS_SUCCESS = 'userList::FETCH_USERS_SUCCESS',
+  FETCH_USERS_FAILURE = 'userList::FETCH_USERS_FAILURE'
+}
