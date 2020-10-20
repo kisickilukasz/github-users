@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import { List, Avatar } from 'antd';
+import { List } from 'antd';
+import { UserAvatar } from '../../components/UserAvatar';
 
 import { fetchGithubUsers } from './actions/userList';
 
@@ -9,12 +11,17 @@ import { getUserList } from './selectors/userList';
 
 export function UserList() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const userList = useSelector(getUserList);
-  const onImageClick = (e: any) => console.log('image: ', e);
 
   useEffect(() => {
     dispatch(fetchGithubUsers());
   }, [dispatch]);
+
+  const onClick = (userLogin: string) => {
+    console.log('user login: ', userLogin);
+    history.push(`/${userLogin}`);
+  };
 
   return (
     <List
@@ -23,7 +30,10 @@ export function UserList() {
       dataSource={userList}
       renderItem={(item: any) => (
         <List.Item>
-          <List.Item.Meta avatar={<Avatar src={item.avatar_url} />} title={<a href="https://ant.design">{item.login}</a>} />
+          <List.Item.Meta
+            avatar={<UserAvatar avatarUrl={item.avatar_url} userLogin={item.login} onClick={onClick} />}
+            title={<div>{item.login}</div>}
+          />
         </List.Item>
       )}
     />

@@ -11,13 +11,13 @@ import { getUserName } from './selectors/userDetails';
 export function UserDetails() {
   const dispatch = useDispatch();
   const userName = useSelector(getUserName);
-  const { userId } = useParams();
+  const { userLogin } = useParams();
 
   const updateUserName = useCallback((e) => dispatch(updateUserDetailsName(e.target.value)), [dispatch]);
 
   return (
     <div>
-      <h2>{userId}</h2>
+      <h2>{userLogin}</h2>
       <h2>{userName}</h2>
       <input onChange={updateUserName} />
       <Button type="primary">Button</Button>

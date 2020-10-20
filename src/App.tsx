@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-import { UserList } from './UserList/UserList';
-import { UserDetails } from './UserDetails/UserDetails';
+import { UserList } from './pages/UserList/UserList';
+import { UserDetails } from './pages/UserDetails/UserDetails';
 
 import './App.css';
 
@@ -24,7 +24,7 @@ export default function App() {
           <Route exact path="/">
             <UserList />
           </Route>
-          <Route path="/:userId">
+          <Route path="/:userLogin">
             <UserDetails />
           </Route>
         </Switch>
