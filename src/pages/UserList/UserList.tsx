@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { Layout, List } from 'antd';
-import { UserAvatar } from '../../components/UserAvatar';
+import { UserAvatar } from './components/UserAvatar';
 import { Header } from '../../components/styled';
-import { ListItemMeta } from './components/styled/ListItemMeta';
+import { ListItemMeta } from './components/styled';
 
 import { fetchUsers } from './actions/userList';
 
