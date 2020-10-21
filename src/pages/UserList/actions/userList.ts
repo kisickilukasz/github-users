@@ -1,13 +1,16 @@
-import { Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { Action, AnyAction } from 'redux';
+import { User } from '../../../interfaces';
+import { FetchUsersSuccess, FetchUsersFailure } from './userList.interface';
 
 import { getGitHubUsers } from '../api/userList';
 
 import { UserListActionType } from '../constants/actionTypes';
 
-import { Params } from '../api/userList';
+import { Params } from '../../../interfaces';
 
-export function fetchUsers(params: Params) {
-  return (dispatch: Dispatch) => {
+export function fetchUsers(params: Params): ThunkAction<Promise<Action>, never, undefined, AnyAction> {
+  return (dispatch) => {
     dispatch({
       type: UserListActionType.FETCH_USERS
     });
@@ -17,14 +20,14 @@ export function fetchUsers(params: Params) {
   };
 }
 
-export function fetchUsersSuccess(users: any) {
+export function fetchUsersSuccess(users: User[]): FetchUsersSuccess {
   return {
     type: UserListActionType.FETCH_USERS_SUCCESS,
     users
   };
 }
 
-export function fetchUsersFailure(errors: any) {
+export function fetchUsersFailure(errors: any): FetchUsersFailure {
   return {
     type: UserListActionType.FETCH_USERS_FAILURE,
     errors

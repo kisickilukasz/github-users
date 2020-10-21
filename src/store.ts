@@ -16,3 +16,5 @@ const rootReducer = combineReducers({
 
 // creates global store, connects redux devtools and other middlewares
 export default createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk, logger)));
+
+export type RootState = ReturnType<typeof rootReducer>;

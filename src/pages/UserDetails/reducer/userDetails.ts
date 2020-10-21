@@ -1,18 +1,20 @@
 import { UserDetailsActionType } from '../constants/actionTypes';
+import { UserDetailsAction } from '../actions/userDetails.interface';
+import { DetailedUser } from '../../../interfaces';
 
 const initialState = {
   isFetching: false,
-  user: null,
+  user: {} as DetailedUser,
   errors: []
 };
 
-interface UserDetails {
+interface UserDetailsState {
   isFetching: boolean;
-  user: any;
+  user: DetailedUser;
   errors: any;
 }
 
-export function userDetails(state: UserDetails = initialState, action: any): UserDetails {
+export function userDetails(state: UserDetailsState = initialState, action: UserDetailsAction): UserDetailsState {
   switch (action.type) {
     case UserDetailsActionType.FETCH_USER_DETAILS:
       return {

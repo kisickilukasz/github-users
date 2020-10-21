@@ -1,4 +1,6 @@
-const getUserListState = (state: any) => state.userList;
+import { RootState } from '../../../store';
 
-export const getUserList = (state: any) => getUserListState(state).users;
-export const getIsFetchingUsers = (state: any) => getUserListState(state).isFetching;
+const getUserListState = (state: RootState) => state.userList;
+
+export const getUserList = (state: RootState) => getUserListState(state).users;
+export const getIsFetchingUsers = (state: RootState) => getUserListState(state).isFetching;

@@ -29,17 +29,19 @@ export function UserDetails() {
         <Loader />
       ) : (
         <Fragment>
-          <Header title={user?.name} onBack={history.goBack} />
-          <UserDetailsAvatar src={user?.avatar_url} size={120} />
+          <Header title={user.name} onBack={history.goBack} />
+          <UserDetailsAvatar src={user.avatar_url} size={120} />
           <Card>
             <Card.Meta
               description={
                 <Descriptions size="small" column={1} bordered>
-                  <Descriptions.Item label="Name">{user?.name}</Descriptions.Item>
-                  <Descriptions.Item label="Login">{user?.login}</Descriptions.Item>
-                  <Descriptions.Item label="Followers">{user?.followers}</Descriptions.Item>
-                  <Descriptions.Item label="Location">{user?.location}</Descriptions.Item>
-                  <Descriptions.Item label="Hireable">{user?.hireable ? user?.hireable : 'maybe'}</Descriptions.Item>
+                  <Descriptions.Item label="Name">{user.name}</Descriptions.Item>
+                  <Descriptions.Item label="Login">{user.login}</Descriptions.Item>
+                  <Descriptions.Item label="Followers">{user.followers}</Descriptions.Item>
+                  <Descriptions.Item label="Location">
+                    {user.location ? user.location : 'Somewhere in the Universe'}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Hireable">{user.hireable ? user.hireable : 'maybe'}</Descriptions.Item>
                 </Descriptions>
               }
             />

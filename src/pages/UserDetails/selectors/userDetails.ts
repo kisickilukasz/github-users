@@ -1,4 +1,6 @@
-const getUserDetailsState = (state: any) => state.userDetails;
+import { RootState } from '../../../store';
 
-export const getUserDetails = (state: any) => getUserDetailsState(state).user;
-export const getIsFetchingUserDetails = (state: any) => getUserDetailsState(state).isFetching;
+const getUserDetailsState = (state: RootState) => state.userDetails;
+
+export const getUserDetails = (state: RootState) => getUserDetailsState(state).user;
+export const getIsFetchingUserDetails = (state: RootState) => getUserDetailsState(state).isFetching;

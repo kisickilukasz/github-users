@@ -1,4 +1,6 @@
 import { UserListActionType } from '../constants/actionTypes';
+import { UserListAction } from '../actions/userList.interface';
+import { User } from '../../../interfaces';
 
 const initialState = {
   isFetching: false,
@@ -6,13 +8,13 @@ const initialState = {
   errors: []
 };
 
-interface UserList {
+interface UserListState {
   isFetching: boolean;
-  users: any;
+  users: User[];
   errors: any;
 }
 
-export function userList(state: UserList = initialState, action: any): UserList {
+export function userList(state: UserListState = initialState, action: UserListAction): UserListState {
   switch (action.type) {
     case UserListActionType.FETCH_USERS:
       return {
