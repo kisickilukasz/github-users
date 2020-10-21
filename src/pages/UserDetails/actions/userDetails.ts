@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux';
+import { AxiosRequestConfig } from 'axios';
 
 import { getGitHubUserDetails } from '../api/userDetails';
 
