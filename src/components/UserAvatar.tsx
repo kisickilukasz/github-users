@@ -1,5 +1,6 @@
 import React from 'react';
 import { Avatar } from 'antd';
+import { AvatarWrapper } from './styled';
 
 interface UserAvatarProps {
   userLogin: string;
@@ -10,8 +11,8 @@ interface UserAvatarProps {
 export function UserAvatar({ userLogin, avatarUrl, onClick }: UserAvatarProps) {
   const onAvatarClick = () => onClick(userLogin);
   return (
-    <div onClick={onAvatarClick}>
+    <AvatarWrapper onClick={onAvatarClick}>
       <Avatar src={avatarUrl} />
-    </div>
+    </AvatarWrapper>
   );
 }

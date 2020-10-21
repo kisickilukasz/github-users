@@ -23,7 +23,7 @@ export function userList(state: UserList = initialState, action: any): UserList 
       return {
         ...state,
         isFetching: false,
-        users: action.users
+        users: [...state.users, ...action.users]
       };
     case UserListActionType.FETCH_USERS_FAILURE:
       return {

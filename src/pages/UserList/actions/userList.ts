@@ -4,12 +4,14 @@ import { getGitHubUsers } from '../api/userList';
 
 import { UserListActionType } from '../constants/actionTypes';
 
-export function fetchUsers() {
+import { Params } from '../api/userList';
+
+export function fetchUsers(params: Params) {
   return (dispatch: Dispatch) => {
     dispatch({
       type: UserListActionType.FETCH_USERS
     });
-    return getGitHubUsers()
+    return getGitHubUsers(params)
       .then((response) => dispatch(fetchUsersSuccess(response.data)))
       .catch((error) => dispatch(fetchUsersFailure(error.resonse.data)));
   };
